@@ -1,0 +1,26 @@
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\bin\Debug\net6.0\appsettings.json
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\bin\Debug\net6.0\Comp1004 Web Application.staticwebassets.runtime.json
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\bin\Debug\net6.0\Comp1004 Web Application.exe
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\bin\Debug\net6.0\Comp1004 Web Application.deps.json
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\bin\Debug\net6.0\Comp1004 Web Application.runtimeconfig.json
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\bin\Debug\net6.0\Comp1004 Web Application.dll
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\bin\Debug\net6.0\Comp1004 Web Application.pdb
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\obj\Debug\net6.0\Comp1004 Web Application.csproj.AssemblyReference.cache
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\obj\Debug\net6.0\Comp1004 Web Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\obj\Debug\net6.0\Comp1004 Web Application.AssemblyInfoInputs.cache
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\obj\Debug\net6.0\Comp1004 Web Application.AssemblyInfo.cs
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\obj\Debug\net6.0\Comp1004 Web Application.csproj.CoreCompileInputs.cache
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\obj\Debug\net6.0\Comp1004 Web Application.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\obj\Debug\net6.0\Comp1004 Web Application.RazorAssemblyInfo.cache
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\obj\Debug\net6.0\Comp1004 Web Application.RazorAssemblyInfo.cs
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\obj\Debug\net6.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\obj\Debug\net6.0\scopedcss\bundle\Comp1004 Web Application.styles.css
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\obj\Debug\net6.0\scopedcss\projectbundle\Comp1004 Web Application.bundle.scp.css
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\obj\Debug\net6.0\Comp1004 Web Application.dll
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\obj\Debug\net6.0\refint\Comp1004 Web Application.dll
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\obj\Debug\net6.0\Comp1004 Web Application.pdb
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\obj\Debug\net6.0\Comp1004 Web Application.genruntimeconfig.cache
+C:\Users\frank\Course-Shit\Comp1004\Application\Comp1004 Web Application\obj\Debug\net6.0\ref\Comp1004 Web Application.dll
