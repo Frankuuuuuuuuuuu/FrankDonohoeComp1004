@@ -5,8 +5,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddCors(p => p.AddPolicy("corspolicy1", build =>
 {
     build.WithOrigins("").AllowAnyMethod().AllowAnyHeader();
-}
-));
+}));
 
 var app = builder.Build();
 

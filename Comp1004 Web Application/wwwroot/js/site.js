@@ -141,13 +141,9 @@ var stories = []
 */
 
 
-//var url = 'https://comp1004app.s3.eu-west-2.amazonaws.com/data.json';
-
-
-
+var url = 'https://comp1004app.s3.eu-west-2.amazonaws.com/data.json';
 //var url = get_pathname() + "data.json";
 var data;
-var url;
 
 console.log(data);
 
