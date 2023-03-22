@@ -141,57 +141,26 @@ var stories = []
 */
 
 
-
-
-    //const el = document.getElementById('sp');
-    //el.style.opacity = '1';
-
-    //document.getElementById('img1').id = 'img1-v';
-
 //var url = 'https://comp1004app.s3.eu-west-2.amazonaws.com/data.json';
-try {
-    const execSync = require('child_process').execSync;
-    const output = execSync('$ npm install cors', { encoding: 'utf-8' });
-}
-catch {
-    alert("Fail");
-}
 
 
-/*const express = require("express");
-const app = express();
-const cors = require("cors");
-app.use()*/
 
-var url = get_pathname() + "data.json";
+//var url = get_pathname() + "data.json";
 var data;
-
-
-
+var url;
 
 console.log(data);
 
 function fetch_data() {
-    try {
-        fetch(url)
-            .then(response => data)
-            .then(json => {
-                alert(json);
-            })
-    }
-    catch {
-        alert("Fail");
-    }
+    fetch(url).then(function (response) {
+        return response.json();
+    }).then(function (obj) {
+        alert(obj);
+    }).catch(function (error) {
+        alert("fetch failed.")
+    })
 }
 
-function get_data() {
-    try {
-        alert(data);
-    }
-    catch {
-        alert("Fail");
-    }
-}
 
 
 function get_pathname() {

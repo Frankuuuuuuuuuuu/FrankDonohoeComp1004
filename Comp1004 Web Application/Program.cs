@@ -2,6 +2,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddCors(p => p.AddPolicy("corspolicy1", build =>
+{
+    build.WithOrigins("").AllowAnyMethod().AllowAnyHeader();
+}
+));
 
 var app = builder.Build();
 
