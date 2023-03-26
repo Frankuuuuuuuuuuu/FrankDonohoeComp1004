@@ -1,8 +1,4 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
-
+﻿
 /*
 class Story {
     constructor(story_id, owner, image, profile_image, time_posted) {
@@ -134,36 +130,49 @@ story4_3 = new Story_viewing(011, "lil boat", "img\s4\Story4-3.jpg", "img\profil
 story5_1 = new Story_viewing(012, "lil boat", "img\s5\Story5-1.jpg", "img\profile5.jpg", d.getTime)
 story5_2 = new Story_viewing(013, "lil boat", "img\s5\Story5-2.jpg", "img\profile5.jpg", d.getTime)
 story5_3 = new Story_viewing(014, "lil boat", "img\s5\Story5-3.jpg", "img\profile5.jpg", d.getTime)
-
 var stories = []
 
 
 */
 
-
-var url = 'https://comp1004app.s3.eu-west-2.amazonaws.com/data.json';
-//var url = get_pathname() + "data.json";
+var userlist = [];
 var data;
 
-console.log(data);
 
-function fetch_data() {
-    fetch(url).then(function (response) {
-        return response.json();
-    }).then(function (obj) {
-        alert(obj);
-    }).catch(function (error) {
-        alert("fetch failed.")
-    })
+function init_userlist() {
+    for (i = 0; i < data.length; i++) {
+        userlist.push(data[i].name);
+    }
 }
 
+function get_user(n) {
+    username = userlist[n - 1];
+    return username;
+}
+
+function get_user_img(username) {
+    img_path = "img/" + username + "/" + username + "_prof_img.jpg";
+    return img_path;
+}
+
+function init_storybar() {
+    var temp_id;
+    var image;
+    var username;
+    for (i = 0; i < userlist.length; i++) {
+        temp_id = "img" + (i + 1);
+        image = document.getElementById(temp_id);
+        username = get_user(i + 1);
+        image.src = get_user_img(username);
+    }
+}
 
 
 function get_pathname() {
     let path = location.pathname;
     let path_split = path.split('/');
     path = "";
-    path_split.pop(path_split.length - 1)
+    path_split.pop(path_split.length - 1);
     path = path_split.join('/')
     path += "/";
     path = path.substring(1);
@@ -181,3 +190,43 @@ function toggle_story() {
         document.getElementById('sp').style.opacity = '1';
     }
 }
+
+var data = [
+    {
+        "name": "Future",
+        "story_n": 3,
+        "id_1": "001",
+        "id_2": "002",
+        "id_3": "003"
+    },
+    {
+        "name": "Thugger",
+        "story_n": 3,
+        "id_1": "004",
+        "id_2": "005",
+        "id_3": "006"
+    },
+    {
+        "name": "Carti",
+        "story_n": 3,
+        "id_1": "007",
+        "id_2": "008",
+        "id_3": "009"
+    },
+    {
+        "name": "lil boat",
+        "story_n": 3,
+        "id_1": "010",
+        "id_2": "011",
+        "id_3": "012"
+    },
+    {
+        "name": "Weezy",
+        "story_n": 3,
+        "id_1": "013",
+        "id_2": "014",
+        "id_3": "015"
+    }
+];
+
+init_userlist();
