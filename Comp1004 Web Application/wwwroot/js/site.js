@@ -172,8 +172,10 @@ function init_storybar() {
 }
 
 function generate_story_data(n) {
+    if (cur_user != get_user(n))
     var temp_user;
     var temp_id;
+    story_c = 1;
     cur_story_ids = [];
     cur_user = get_user(n);
     for (i = 0; i < data.length; i++) {
@@ -187,6 +189,22 @@ function generate_story_data(n) {
     }
 }
 
+function get_current_story() {
+    var story_id = cur_story_ids[story_c - 1];
+    var img_path = "img/" + cur_user + "/" + story_id + ".jpg";
+    return img_path;
+}
+
+function set_current_story() {
+    var image = document.getElementById("story1");
+    image.src = get_current_story();
+    
+}
+
+function init_story(n) {
+    generate_story_data(n);
+    set_current_story();
+}
 
 function get_pathname() {
     let path = location.pathname;
@@ -199,7 +217,8 @@ function get_pathname() {
     return path;
 }
 
-function toggle_story() {
+function toggle_story(n) {
+    init_story(n);
     if (document.getElementById('sp').style.dis == '0') {
         document.getElementById('sp').style.opacity = '1';
     }
