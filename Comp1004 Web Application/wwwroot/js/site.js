@@ -135,8 +135,12 @@ var stories = []
 
 */
 
+
 var userlist = [];
 var data;
+var cur_story_ids;
+var cur_user;
+var story_c;
 
 
 function init_userlist() {
@@ -164,6 +168,22 @@ function init_storybar() {
         image = document.getElementById(temp_id);
         username = get_user(i + 1);
         image.src = get_user_img(username);
+    }
+}
+
+function generate_story_data(n) {
+    var temp_user;
+    var temp_id;
+    cur_story_ids = [];
+    cur_user = get_user(n);
+    for (i = 0; i < data.length; i++) {
+        if (data[i].name == username) {
+            temp_user = data[i];
+        }
+    }
+    for (i = 1; i <= temp_user.story_n; i++) {
+        temp_id = "id_" + i;
+        cur_story_ids.push(temp_user[temp_id]);
     }
 }
 
