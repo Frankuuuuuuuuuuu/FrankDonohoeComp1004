@@ -136,30 +136,30 @@ var stories = []
 */
 
 
-var userlist = [];
+var userlist = [];//Usernames
 var data;
-var cur_story_ids;
-var cur_user;
-var story_c;
+var cur_story_ids = [];//Current story ids
+var cur_user;//Current user
+var story_c;//Current story index, relative to cur_story_ids
 
 
-function init_userlist() {
+function init_userlist() { //Adds usernames in data to userlist
     for (i = 0; i < data.length; i++) {
         userlist.push(data[i].name);
     }
 }
 
-function get_user(n) {
+function get_user(n) {//Gets username of user at pos n in userlist
     username = userlist[n - 1];
     return username;
 }
 
-function get_user_img(username) {
+function get_user_img(username) {//Gets profile image from username
     img_path = "img/" + username + "/" + username + "_prof_img.jpg";
     return img_path;
 }
 
-function init_storybar() {
+function init_storybar() {//Sets profile images in story bar using order from userlist
     var temp_id;
     var image;
     var username;
@@ -171,37 +171,65 @@ function init_storybar() {
     }
 }
 
-function generate_story_data(n) {
-    if (cur_user != get_user(n))
-    var temp_user;
-    var temp_id;
-    story_c = 1;
-    cur_story_ids = [];
-    cur_user = get_user(n);
-    for (i = 0; i < data.length; i++) {
-        if (data[i].name == username) {
-            temp_user = data[i];
+function generate_story_data(n) {//Generates story data for user at pos n
+    if (cur_user != get_user(n)) {
+        var temp_user;
+        var temp_id;
+        story_c = 1;
+        cur_story_ids = [];
+        cur_user = get_user(n);
+        for (i = 0; i < data.length; i++) {
+            if (data[i].name == username) {
+                temp_user = data[i];
+            }
         }
-    }
-    for (i = 1; i <= temp_user.story_n; i++) {
-        temp_id = "id_" + i;
-        cur_story_ids.push(temp_user[temp_id]);
+        for (i = 1; i <= temp_user.story_n; i++) {
+            temp_id = "id_" + i;
+            cur_story_ids.push(temp_user[temp_id]);
+        }
     }
 }
 
-function get_current_story() {
+function get_current_story() {//Gets story id for the story at the current index in cur_story_ids
     var story_id = cur_story_ids[story_c - 1];
     var img_path = "img/" + cur_user + "/" + story_id + ".jpg";
     return img_path;
 }
 
-function set_current_story() {
+function set_current_story() {//Sets story
     var image = document.getElementById("story1");
     image.src = get_current_story();
     
 }
 
-function init_story(n) {
+function get_adjacent_user(direction) {//Gets adjacent user, 1 for next user, 0 for previous user
+    var user_index;
+    var target_user;
+    for (i = 0; i <= userlist.length; i++) {
+        if (cur_user == userlist[i]) {
+            user_index = i;
+        }
+        break;
+    }
+    if (direction == 1) {
+        target_user = userlist[user_index + 1];
+        return target_user;
+    }
+    else if (direction == 0) {
+        target_user = userlist[user_index - 1];
+        return target_user;
+    }
+    
+}
+
+/*
+function previous_story() {
+    if (story_c == 1) {
+
+    }
+}*/
+
+function init_story(n) {//Initiates story UI when profile image is clicked
     generate_story_data(n);
     set_current_story();
 }
@@ -217,7 +245,7 @@ function get_pathname() {
     return path;
 }
 
-function toggle_story(n) {
+function toggle_story(n) {//Toggle story UI opacity
     init_story(n);
     if (document.getElementById('sp').style.dis == '0') {
         document.getElementById('sp').style.opacity = '1';
