@@ -147,7 +147,6 @@ function init_userlist() { //Adds usernames in data to userlist
     for (i = 0; i < data.length; i++) {
         userlist.push(data[i].name);
     }
-    alert(userlist);//For debug
 }
 
 function get_user(n) {//Gets username of user at pos n in userlist
@@ -169,7 +168,6 @@ function init_storybar() {//Sets profile images in story bar using order from us
         image = document.getElementById(temp_id);
         username = get_user(i);
         image.src = get_user_img(username);
-        alert(userlist);
     }
 }
 
@@ -180,7 +178,6 @@ function generate_story_data(n) {//Generates story data for user at pos n
         story_c = 1;
         cur_story_ids = [];
         cur_user = get_user(n);
-        alert(cur_user);//For debug
         for (i = 0; i < data.length; i++) {
             if (data[i].name == username) {
                 temp_user = data[i];
@@ -228,11 +225,6 @@ function get_adjacent_user_index(direction) {//Gets adjacent user(and index), 1 
     
 }
 
-function alert1() {
-    var adjindex = get_adjacent_user_index(0);
-    alert(adjindex);
-}
-
 function previous_story() {
     if (story_c == 1) {
         var n = get_adjacent_user_index(0);
@@ -246,6 +238,8 @@ function previous_story() {
         set_current_story();
     }
 }
+
+
 
 function init_story(n) {//Initiates story UI when profile image is clicked
     generate_story_data(n);
