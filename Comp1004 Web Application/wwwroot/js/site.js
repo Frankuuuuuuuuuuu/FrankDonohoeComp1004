@@ -147,10 +147,11 @@ function init_userlist() { //Adds usernames in data to userlist
     for (i = 0; i < data.length; i++) {
         userlist.push(data[i].name);
     }
+    alert(userlist);//For debug
 }
 
 function get_user(n) {//Gets username of user at pos n in userlist
-    username = userlist[n - 1];
+    username = userlist[n];
     return username;
 }
 
@@ -166,8 +167,9 @@ function init_storybar() {//Sets profile images in story bar using order from us
     for (i = 0; i < userlist.length; i++) {
         temp_id = "img" + (i + 1);
         image = document.getElementById(temp_id);
-        username = get_user(i + 1);
+        username = get_user(i);
         image.src = get_user_img(username);
+        alert(userlist);
     }
 }
 
@@ -233,7 +235,7 @@ function alert1() {
 
 function previous_story() {
     if (story_c == 1) {
-        var prev_user, n = get_adjacent_user(0);
+        var n = get_adjacent_user_index(0);
         generate_story_data(n);
         story_c = cur_story_ids.length;
         alert(cur_story_ids)//For debug
