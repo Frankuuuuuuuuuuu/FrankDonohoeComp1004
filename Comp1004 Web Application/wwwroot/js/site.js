@@ -230,7 +230,6 @@ function previous_story() {
         var n = get_adjacent_user_index(0);
         generate_story_data(n);
         story_c = cur_story_ids.length;
-        alert(cur_story_ids)//For debug
         set_current_story();
     }
     else {
@@ -239,7 +238,18 @@ function previous_story() {
     }
 }
 
-
+function next_story() {
+    if (story_c == cur_story_ids.length) {
+        var n = get_adjacent_user_index(1);
+        generate_story_data(n);
+        story_c = 1;
+        set_current_story();
+    }
+    else {
+        story_c += 1;
+        set_current_story();
+    }
+}
 
 function init_story(n) {//Initiates story UI when profile image is clicked
     generate_story_data(n);
