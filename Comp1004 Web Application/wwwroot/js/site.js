@@ -178,6 +178,7 @@ function generate_story_data(n) {//Generates story data for user at pos n
         story_c = 1;
         cur_story_ids = [];
         cur_user = get_user(n);
+        alert(cur_user);//For debug
         for (i = 0; i < data.length; i++) {
             if (data[i].name == username) {
                 temp_user = data[i];
@@ -202,32 +203,47 @@ function set_current_story() {//Sets story
     
 }
 
-function get_adjacent_user(direction) {//Gets adjacent user, 1 for next user, 0 for previous user
-    var user_index;
-    var target_user;
+function get_cur_user_index() {
     for (i = 0; i <= userlist.length; i++) {
         if (cur_user == userlist[i]) {
-            user_index = i;
+            return i;
         }
-        break;
     }
+    return -1;
+
+}
+
+function get_adjacent_user_index(direction) {//Gets adjacent user(and index), 1 for next user, 0 for previous user
+    var user_index = get_cur_user_index();
     if (direction == 1) {
-        target_user = userlist[user_index + 1];
-        return target_user;
+        user_index += 1;
+        return user_index;
     }
     else if (direction == 0) {
-        target_user = userlist[user_index - 1];
-        return target_user;
+        user_index -= 1;
+        return user_index;
     }
     
 }
 
-/*
+function alert1() {
+    var adjindex = get_adjacent_user_index(0);
+    alert(adjindex);
+}
+
 function previous_story() {
     if (story_c == 1) {
-
+        var prev_user, n = get_adjacent_user(0);
+        generate_story_data(n);
+        story_c = cur_story_ids.length;
+        alert(cur_story_ids)//For debug
+        set_current_story();
     }
-}*/
+    else {
+        story_c -= 1;
+        set_current_story();
+    }
+}
 
 function init_story(n) {//Initiates story UI when profile image is clicked
     generate_story_data(n);
