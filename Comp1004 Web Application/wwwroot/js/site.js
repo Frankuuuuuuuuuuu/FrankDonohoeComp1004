@@ -192,30 +192,27 @@ function generate_story_data(n) {//Generates story data for user at pos n
 
 function get_current_story(type) {//Gets story id for the story at the current index in cur_story_ids
     var story_id = cur_story_ids[story_c - 1];
+    var user = get_user_data(cur_user);
+    user.story_s.push(story_id);
+    alert(user.story_s);
     var img_path = "img/" + cur_user + "/" + story_id + type;
     return img_path;
 }
 
+function get_user_data(username) {
+    var temp_user;
+    for (i = 0; i < data.length; i++) {
+        if (data[i].name == username) {
+            temp_user = data[i];
+            return temp_user;
+        }
+    }
+}
+
 function set_current_story() {//Sets story
     var image = document.getElementById("story1");
-    image.src = get_current_story(".jpg");
-
-    
-    
-    
+    image.src = get_current_story(".jpg");   
 }
-/*
-function get_image_type() {
-    var image = new Image();
-    image.src = get_current_story(".jpg");
-    if (image.height != 0) {
-        return ".jpg".
-    }
-    image.src = get_current_story(".png");
-    if (image.height != 0) {
-        return ".png".
-    }
-}*/
 
 function get_cur_user_index() {
     for (i = 0; i <= userlist.length; i++) {
@@ -299,6 +296,7 @@ var data = [
     {
         "name": "Future",
         "story_n": 3,
+        "story_s": [],
         "id_1": "001",
         "id_2": "002",
         "id_3": "003"
@@ -306,6 +304,7 @@ var data = [
     {
         "name": "Thugger",
         "story_n": 3,
+        "story_s": [],
         "id_1": "004",
         "id_2": "005",
         "id_3": "006"
@@ -313,6 +312,7 @@ var data = [
     {
         "name": "Carti",
         "story_n": 3,
+        "story_s": [],
         "id_1": "007",
         "id_2": "008",
         "id_3": "009"
@@ -320,6 +320,7 @@ var data = [
     {
         "name": "lil boat",
         "story_n": 3,
+        "story_s": [],
         "id_1": "010",
         "id_2": "011",
         "id_3": "012"
@@ -327,6 +328,7 @@ var data = [
     {
         "name": "Weezy",
         "story_n": 3,
+        "story_s": [],
         "id_1": "013",
         "id_2": "014",
         "id_3": "015"
