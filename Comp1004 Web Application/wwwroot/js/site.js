@@ -173,19 +173,15 @@ function init_storybar() {//Sets profile images in story bar using order from us
 
 function generate_story_data(n) {//Generates story data for user at pos n
     if (cur_user != get_user(n)) {
-        var temp_user;
+        var user;
         var temp_id;
         story_c = 1;
         cur_story_ids = [];
         cur_user = get_user(n);
-        for (i = 0; i < data.length; i++) {
-            if (data[i].name == username) {
-                temp_user = data[i];
-            }
-        }
-        for (i = 1; i <= temp_user.story_n; i++) {
+        user = get_user_data(cur_user);
+        for (i = 1; i <= user.story_n; i++) {
             temp_id = "id_" + i;
-            cur_story_ids.push(temp_user[temp_id]);
+            cur_story_ids.push(user[temp_id]);
         }
     }
 }
