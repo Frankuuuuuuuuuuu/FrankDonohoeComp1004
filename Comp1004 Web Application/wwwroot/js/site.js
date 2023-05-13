@@ -194,7 +194,6 @@ function get_current_story(type) {//Gets story id for the story at the current i
     var story_id = cur_story_ids[story_c - 1];
     var user = get_user_data(cur_user);
     user.story_s.push(story_id);
-    alert(user.story_s);
     var img_path = "img/" + cur_user + "/" + story_id + type;
     return img_path;
 }
@@ -206,6 +205,24 @@ function get_user_data(username) {
             temp_user = data[i];
             return temp_user;
         }
+    }
+}
+
+function check_user_seen() {//Returns boolean dependent on whether all of current user's storys are seen
+    var user = get_user_data(cur_user);
+    var count = 0;
+    for (i = 0; i < cur_story_ids.length; i++) {
+        for (j = 0; j < user.story_s.length; j++) {
+            if (cur_story_ids[i] == user.story_s[j]) {//Counts number of common story ids in currently loaded story ids and seen story ids
+                count++;
+            }
+        }
+    }
+    if (count == cur_story_ids.length) {//Returns true if number of common ids is equal to number of current story ids
+        return true;
+    }
+    else {
+        return false;
     }
 }
 
