@@ -174,7 +174,6 @@ function init_storybar() {//Sets profile images in story bar using order from us
 function generate_story_data(n) {//Generates story data for user at pos n
     if (cur_user != get_user(n)) {
         var user;
-        var temp_id;
         story_c = 1;
         cur_story_ids = [];
         cur_user = get_user(n);
@@ -210,27 +209,26 @@ function get_user_data(username) {
     }
 }
 
-function check_user_seen() {//Returns boolean dependent on whether all of current user's storys are seen
-    var user = get_user_data(cur_user);
+function check_user_seen(username) {//Returns boolean dependent on whether all of selected user's storys are seen
+    var user = get_user_data(username);
+    var story_ids = get_user_story_ids(user);
     var count = 0;
-    for (i = 0; i < cur_story_ids.length; i++) {
+    for (i = 0; i < story_ids.length; i++) {
         for (j = 0; j < user.story_s.length; j++) {
-            if (cur_story_ids[i] == user.story_s[j]) {//Counts number of common story ids in currently loaded story ids and seen story ids
+            if (story_ids[i] == user.story_s[j]) {//Counts number of common story ids in loaded story ids and seen story ids
                 count++;
             }
         }
     }
-    if (count == cur_story_ids.length) {//Returns true if number of common ids is equal to number of current story ids
+    if (count == story_ids.length) {//Returns true if number of common ids is equal to number of story ids
         return true;
-    }
-    else {
-        return false;
     }
 }
 
 function set_current_story() {//Sets story
     var image = document.getElementById("story1");
-    image.src = get_current_story(".jpg");   
+    image.src = get_current_story(".jpg");
+    check_user_seen(cur_user);
 }
 
 function get_cur_user_index() {
