@@ -225,10 +225,14 @@ function check_user_seen(username) {//Returns boolean dependent on whether all o
     }
 }
 
+function requeue_user(username) {
+    userlist = userlist.filter(function (e) { return e !== username });
+    userlist.push(username);
+}
+
 function set_current_story() {//Sets story
     var image = document.getElementById("story1");
     image.src = get_current_story(".jpg");
-    check_user_seen(cur_user);
 }
 
 function get_cur_user_index() {
