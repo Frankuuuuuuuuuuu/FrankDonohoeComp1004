@@ -179,11 +179,17 @@ function generate_story_data(n) {//Generates story data for user at pos n
         cur_story_ids = [];
         cur_user = get_user(n);
         user = get_user_data(cur_user);
-        for (i = 1; i <= user.story_n; i++) {
-            temp_id = "id_" + i;
-            cur_story_ids.push(user[temp_id]);
-        }
+        cur_story_ids = get_user_story_ids(user);
     }
+}
+
+function get_user_story_ids(user) {
+    var story_list = [];
+    for (i = 1; i <= user.story_n; i++) {
+        temp_id = "id_" + i;
+        story_list.push(user[temp_id]);
+    }
+    return story_list;
 }
 
 function get_current_story(type) {//Gets story id for the story at the current index in cur_story_ids
