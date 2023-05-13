@@ -173,12 +173,20 @@ function init_storybar() {//Sets profile images in story bar using order from us
 
 function generate_story_data(n) {//Generates story data for user at pos n
     if (cur_user != get_user(n)) {
+        if (cur_user != undefined) {
+            if (check_user_seen(cur_user) == true) {
+                requeue_user(cur_user);
+            }
+        }
+
         var user;
         story_c = 1;
         cur_story_ids = [];
         cur_user = get_user(n);
         user = get_user_data(cur_user);
         cur_story_ids = get_user_story_ids(user);
+
+
     }
 }
 
@@ -223,12 +231,17 @@ function check_user_seen(username) {//Returns boolean dependent on whether all o
     if (count == story_ids.length) {//Returns true if number of common ids is equal to number of story ids
         return true;
     }
+    else {
+        return false;
+    }
 }
 
 function requeue_user(username) {
     userlist = userlist.filter(function (e) { return e !== username });
     userlist.push(username);
+    init_storybar();
 }
+
 
 function set_current_story() {//Sets story
     var image = document.getElementById("story1");
