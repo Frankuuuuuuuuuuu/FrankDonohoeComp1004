@@ -6,6 +6,7 @@ var cur_user;//Current user
 var story_c;//Current story index, relative to cur_story_ids
 var seen_n = null;
 var timer;
+var progress_i = 0;
 
 function init_userlist() { //Adds usernames in data to userlist
     for (i = 0; i < data.length; i++) {
@@ -143,8 +144,32 @@ function set_current_story() {//Sets story
     var image = document.getElementById("story1");
     image.src = get_current_story(".jpg");
     timer = setTimeout(next_story, 15000);
+    progress();
 
 }
+
+function progress() {
+    var element = document.getElementById("progress");
+    element.style.width = "1%";
+    if (progress_i == 0) {
+        progress_i = 1;
+        
+        var width = 1;
+        var interval = setInterval(check_progress, 10);
+        function check_progress() {
+            if (width >= 100) {
+                clearInterval(interval);
+                progress_i = 0;
+            }
+            else {
+                width += 0.0666666666667;
+                element.style.width = width + "%";
+            }
+        }
+    }
+}
+
+
 
 function get_cur_user_index() {
     for (i = 0; i <= userlist.length; i++) {
