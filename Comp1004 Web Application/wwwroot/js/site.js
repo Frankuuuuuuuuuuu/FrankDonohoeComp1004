@@ -177,10 +177,8 @@ function generate_story_data(n) {//Generates story data for user at pos n
         if (cur_user != undefined) {
             if (check_user_seen(cur_user) == true) {
                 requeue_user(cur_user);
-                var index = get_cur_user_index();
                 set_profile_opacity();
             }
-            
         }
 
         var user;
@@ -189,8 +187,6 @@ function generate_story_data(n) {//Generates story data for user at pos n
         cur_user = get_user(n);
         user = get_user_data(cur_user);
         cur_story_ids = get_user_story_ids(user);
-
-
     }
 }
 
