@@ -178,7 +178,7 @@ function generate_story_data(n) {//Generates story data for user at pos n
             if (check_user_seen(cur_user) == true) {
                 requeue_user(cur_user);
                 var index = get_cur_user_index();
-                set_profile_opacity(index);
+                //set_profile_opacity();
             }
             
         }
@@ -194,9 +194,13 @@ function generate_story_data(n) {//Generates story data for user at pos n
     }
 }
 
-function set_profile_opacity(index) {
-    var temp_id = "img" + (index + 1);
-    document.getElementById(temp_id).style.opacity = 0.7;
+function set_profile_opacity() {
+    var index = userlist.length;
+    for (i = index; i >= i - seen_n; i--) {
+        var temp_id = "img" + (index);
+        document.getElementById(temp_id).style.opacity = 0.7;
+    }
+    seen_n++;
 }
 
 function get_user_story_ids(user) {
@@ -211,9 +215,26 @@ function get_user_story_ids(user) {
 function get_current_story(type) {//Gets story id for the story at the current index in cur_story_ids
     var story_id = cur_story_ids[story_c - 1];
     var user = get_user_data(cur_user);
-    user.story_s.push(story_id);
+
+    /*for (i = 0; i <= user.story_s.length; i++) {
+
+    }
+    user.story_s.push(story_id);*/
     var img_path = "img/" + cur_user + "/" + story_id + type;
     return img_path;
+}
+
+function story_s_contains(user, story_id) {
+    var count = 0;
+    if (story_s.length == 0) {
+        return false;
+    }
+    for (i = 0; i < user.story_s.length; i++) {
+        if (user.story_s[i] == story_id) {
+            return true;
+        }
+    }
+    return false;
 }
 
 function get_user_data(username) {
@@ -230,13 +251,18 @@ function check_user_seen(username) {//Returns boolean dependent on whether all o
     var user = get_user_data(username);
     var story_ids = get_user_story_ids(user);
     var count = 0;
+    
+    
     for (i = 0; i < story_ids.length; i++) {
         for (j = 0; j < user.story_s.length; j++) {
             if (story_ids[i] == user.story_s[j]) {//Counts number of common story ids in loaded story ids and seen story ids
+                alert(story_ids[i]);
+                alert(user.story_s[j]);
                 count++;
             }
         }
     }
+    alert(count);
     if (count == story_ids.length) {//Returns true if number of common ids is equal to number of story ids
         return true;
     }
@@ -248,6 +274,7 @@ function check_user_seen(username) {//Returns boolean dependent on whether all o
 function requeue_user(username) {
     userlist = userlist.filter(function (e) { return e !== username });
     userlist.push(username);
+    alert(userlist);
     init_storybar();
 }
 
