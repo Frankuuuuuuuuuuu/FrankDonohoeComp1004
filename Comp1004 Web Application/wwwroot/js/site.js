@@ -1,148 +1,11 @@
 ﻿
-/*
-class Story {
-    constructor(story_id, owner, image, profile_image, time_posted) {
-        this.story_id = story_id;
-        this.owner = owner;
-        this.image = image;
-        this.profile_image = profile_image;
-        this.time_posted = time_posted;
-    }
-
-    get_story_id() {
-        return this.story_id;
-    }
-
-    get_owner() {
-        return this.owner;
-    }
-
-    get_image() {
-        return this.image;
-    }
-
-    get_profile_image() {
-        return this.profile_image;
-    }
-
-    get_time_posted() {
-        return this.time_posted;
-    }
-
-    get_time_remaining(time) {
-        const d = new Date();
-        return d.getTime() - time;
-    }
-}
-
-class Story_viewing extends Story {
-    constructor(story_id, owner, image, profile_image, time_posted) {
-        super(story_id);
-        super(owner);
-        super(image);
-        super(profile_image);
-        super(time_posted);
-        this.appearance_val = 0;
-        this.view_state = false;
-    }
-
-    set_appearance_val(new_val) {
-        this.appearance_val = new val;
-        return this.appearance_val;
-    }
-
-    get_appearance_val() {
-        return this.appearance_val;
-    }
-
-    set_view_state(new_val) {
-        this.view_state = new val;
-        return this.view_state;
-    }
-
-    get_view_state() {
-        return this.view_state;
-    }
-}
-
-class Story_editing extends Story {
-    constructor(story_id, owner, image, profile_image, time_posted) {
-        super(story_id);
-        super(owner);
-        super(image);
-        super(profile_image);
-        super(time_posted);
-        this.upload_state = 0;
-    }
-
-    set_image(image) {
-        this.image = image;
-        return this.image;
-    }
-
-    set_profile_image(image) {
-        this.profile_image = image;
-        return this.profile_image;
-    }
-
-    set_upload_state(new_val) {
-        this.upload_state = new_val;
-        return this.upload_state;
-    }
-
-    get_upload_state() {
-        return this.upload_state;
-    }
-}
-
-class User_Profile {
-    constructor(name, user_id) {
-        this.name = name;
-        this.user_id = user_id;
-        this.stories = new Array();
-
-        add_story(story) {
-            this.stories.push(story)
-            return story;
-        }
-    }
-}
-    
-
-
-const d = new Date();
-story1_1 = new Story_viewing(000, "Future", "img\s1\Story1-1.jpg", "img\profile1.jpg", d.getTime)
-story1_2 = new Story_viewing(001, "Future", "img\s1\Story1-2.jpg", "img\profile1.jpg", d.getTime)
-story1_3 = new Story_viewing(002, "Future", "img\s1\Story1-3.jpg", "img\profile1.jpg", d.getTime)
-
-story2_1 = new Story_viewing(003, "Thugger", "img\s2\Story2-1.jpg", "img\profile2.jpg", d.getTime)
-story2_2 = new Story_viewing(004, "Thugger", "img\s2\Story2-2.jpg", "img\profile2.jpg", d.getTime)
-story2_3 = new Story_viewing(005, "Thugger", "img\s2\Story2-3.jpg", "img\profile2.jpg", d.getTime)
-
-story3_1 = new Story_viewing(006, "Carti", "img\s3\Story3-1.jpg", "img\profile3.jpg", d.getTime)
-story3_2 = new Story_viewing(007, "Carti", "img\s3\Story3-2.jpg", "img\profile3.png", d.getTime)
-story3_3 = new Story_viewing(008, "Carti", "img\s3\Story3-3.jpg", "img\profile3.jpg", d.getTime)
-
-story4_1 = new Story_viewing(009, "lil boat", "img\s4\Story4-1.jpg", "img\profile4.jpg", d.getTime)
-story4_2 = new Story_viewing(010, "lil boat", "img\s4\Story4-2.jpg", "img\profile4.jpg", d.getTime)
-story4_3 = new Story_viewing(011, "lil boat", "img\s4\Story4-3.jpg", "img\profile4.jpg", d.getTime)
-
-story5_1 = new Story_viewing(012, "lil boat", "img\s5\Story5-1.jpg", "img\profile5.jpg", d.getTime)
-story5_2 = new Story_viewing(013, "lil boat", "img\s5\Story5-2.jpg", "img\profile5.jpg", d.getTime)
-story5_3 = new Story_viewing(014, "lil boat", "img\s5\Story5-3.jpg", "img\profile5.jpg", d.getTime)
-var stories = []
-
-
-*/
-
-
 var userlist = [];//Usernames
 var data;
 var cur_story_ids = [];//Current story ids
 var cur_user;//Current user
 var story_c;//Current story index, relative to cur_story_ids
 var seen_n = null;
-
+var timer;
 
 function init_userlist() { //Adds usernames in data to userlist
     for (i = 0; i < data.length; i++) {
@@ -190,8 +53,8 @@ function generate_story_data(n) {//Generates story data for user at pos n
     }
 }
 
-function set_profile_opacity() {
 
+function set_profile_opacity() {
     if (seen_n == null) {
         seen_n = userlist.length;
     }
@@ -270,14 +133,17 @@ function check_user_seen(username) {//Returns boolean dependent on whether all o
 function requeue_user(username) {
     userlist = userlist.filter(function (e) { return e !== username });
     userlist.push(username);
-    alert(userlist);
+    //alert(userlist);
     init_storybar();
 }
 
 
 function set_current_story() {//Sets story
+    clearTimeout(timer);
     var image = document.getElementById("story1");
     image.src = get_current_story(".jpg");
+    timer = setTimeout(next_story, 15000);
+
 }
 
 function get_cur_user_index() {
