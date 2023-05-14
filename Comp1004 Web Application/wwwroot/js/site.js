@@ -7,6 +7,7 @@ var story_c;//Current story index, relative to cur_story_ids
 var seen_n = null;
 var timer;
 var progress_i = 0;
+var interval;
 
 function init_userlist() { //Adds usernames in data to userlist
     for (i = 0; i < data.length; i++) {
@@ -149,13 +150,15 @@ function set_current_story() {//Sets story
 }
 
 function progress() {
+    progress_i = 0;
     var element = document.getElementById("progress");
     element.style.width = "1%";
+    clearInterval(interval);
     if (progress_i == 0) {
         progress_i = 1;
         
         var width = 1;
-        var interval = setInterval(check_progress, 10);
+        interval = setInterval(check_progress, 10);
         function check_progress() {
             if (width >= 100) {
                 clearInterval(interval);
