@@ -80,3 +80,17 @@ img:hover {
     left: 885px;
     bottom: 300px;
 }
+
+#bar {
+    width: 90%;
+    background-color: rebeccapurple;
+    margin: 50px;
+    margin-top: -20px;
+    margin-bottom: 70px;
+}
+
+#progress {
+    width: 1%;
+    height: 10px;
+    background-color: purple;
+}
