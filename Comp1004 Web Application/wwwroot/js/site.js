@@ -141,7 +141,7 @@ var data;
 var cur_story_ids = [];//Current story ids
 var cur_user;//Current user
 var story_c;//Current story index, relative to cur_story_ids
-var seen_n = 0;
+var seen_n = null;
 
 
 function init_userlist() { //Adds usernames in data to userlist
@@ -178,7 +178,7 @@ function generate_story_data(n) {//Generates story data for user at pos n
             if (check_user_seen(cur_user) == true) {
                 requeue_user(cur_user);
                 var index = get_cur_user_index();
-                //set_profile_opacity();
+                set_profile_opacity();
             }
             
         }
@@ -195,12 +195,13 @@ function generate_story_data(n) {//Generates story data for user at pos n
 }
 
 function set_profile_opacity() {
-    var index = userlist.length;
-    for (i = index; i >= i - seen_n; i--) {
-        var temp_id = "img" + (index);
-        document.getElementById(temp_id).style.opacity = 0.7;
+
+    if (seen_n == null) {
+        seen_n = userlist.length;
     }
-    seen_n++;
+    var temp_id = "img" + (seen_n);
+    document.getElementById(temp_id).style.opacity = 0.7;
+    seen_n--;
 }
 
 function get_user_story_ids(user) {
