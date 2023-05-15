@@ -333,6 +333,46 @@ var data = [
         "id_2": "029",
         "id_3": "030"
     },
+    {
+        "name": "Elon Musk",
+        "story_n": 3,
+        "story_s": [],
+        "id_1": "031",
+        "id_2": "032",
+        "id_3": "033"
+    },
+    {
+        "name": "Fudgemuppet",
+        "story_n": 3,
+        "story_s": [],
+        "id_1": "034",
+        "id_2": "035",
+        "id_3": "036"
+    },
+    {
+        "name": "Jocko Willink",
+        "story_n": 3,
+        "story_s": [],
+        "id_1": "037",
+        "id_2": "038",
+        "id_3": "039"
+    },
+    {
+        "name": "Joe Rogan",
+        "story_n": 3,
+        "story_s": [],
+        "id_1": "040",
+        "id_2": "041",
+        "id_3": "042"
+    },
+    {
+        "name": "Kendrick Lamar",
+        "story_n": 3,
+        "story_s": [],
+        "id_1": "043",
+        "id_2": "044",
+        "id_3": "045"
+    }
 ];
 
 init_userlist();
