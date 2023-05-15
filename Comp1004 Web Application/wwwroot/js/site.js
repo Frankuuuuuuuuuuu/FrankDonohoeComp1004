@@ -372,7 +372,47 @@ var data = [
         "id_1": "043",
         "id_2": "044",
         "id_3": "045"
-    }
+    },
+    {
+        "name": "Ogg Steven",
+        "story_n": 3,
+        "story_s": [],
+        "id_1": "046",
+        "id_2": "047",
+        "id_3": "048"
+    },
+    {
+        "name": "Oxhorn",
+        "story_n": 3,
+        "story_s": [],
+        "id_1": "049",
+        "id_2": "050",
+        "id_3": "051"
+    },
+    {
+        "name": "Pewdiepie",
+        "story_n": 3,
+        "story_s": [],
+        "id_1": "052",
+        "id_2": "053",
+        "id_3": "054"
+    },
+    {
+        "name": "Rejjie Snow",
+        "story_n": 3,
+        "story_s": [],
+        "id_1": "055",
+        "id_2": "056",
+        "id_3": "057"
+    },
+    {
+        "name": "Rick Rubin",
+        "story_n": 3,
+        "story_s": [],
+        "id_1": "058",
+        "id_2": "059",
+        "id_3": "060"
+    },
 ];
 
 init_userlist();
