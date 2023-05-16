@@ -249,7 +249,7 @@ function get_pathname() {
 }
 
 function toggle_story(n) {//Toggle story UI opacity
-    init_story(n);
+    
     if (document.getElementById('sp').style.dis == '0') {
         document.getElementById('sp').style.opacity = '1';
     }
@@ -259,6 +259,7 @@ function toggle_story(n) {//Toggle story UI opacity
     else {
         document.getElementById('sp').style.opacity = '1';
     }
+    init_story(n);
 }
 
 function toggle_upload(direction) {//1 for toggle on, 0 for toggle off
@@ -273,6 +274,14 @@ function toggle_upload(direction) {//1 for toggle on, 0 for toggle off
         document.getElementById('story1').style.opacity = '1';
         document.getElementById('upload_form').style.display = 'none';
     }
+}
+
+function process_file() {
+    var file = document.forms["upload_form"]["imagefile"].value;
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    var story_id = add_story_id();
+    localStorage.setItem(story_id, reader.result);
 }
 
 function add_story_id() {
