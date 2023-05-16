@@ -38,6 +38,12 @@ function init_storybar() {//Sets profile images in story bar using order from us
 }
 
 function generate_story_data(n) {//Generates story data for user at pos n
+    var user = get_user_data(get_user(n));
+    if (user.name == "Main" & user.story_n == 0) {
+        toggle_upload(1);
+        return;
+    }
+
     if (cur_user != get_user(n)) {
         if (cur_user != undefined) {
             if (check_user_seen(cur_user) == true) {
@@ -45,8 +51,10 @@ function generate_story_data(n) {//Generates story data for user at pos n
                 set_profile_opacity();
             }
         }
+        //document.getElementById('bar').style.opacity = '1';
+        //document.getElementById('story1').style.opacity = '1';
 
-        var user;
+        
         story_c = 1;
         cur_story_ids = [];
         cur_user = get_user(n);
@@ -211,6 +219,7 @@ function previous_story() {
 }
 
 function next_story() {
+    toggle_upload(0);
     if (story_c == cur_story_ids.length) {
         var n = get_adjacent_user_index(1);
         generate_story_data(n);
@@ -252,8 +261,18 @@ function toggle_story(n) {//Toggle story UI opacity
     }
 }
 
-function upload_story() {
-
+function toggle_upload(direction) {//1 for toggle on, 0 for toggle off
+    if (direction == 1) {
+        document.getElementById('bar').style.opacity = '0';
+        document.getElementById('story1').style.opacity = '0';
+        document.getElementById('upload_form').style.display = 'block';
+        story_c = 0;
+    }
+    else if (direction == 0) {
+        document.getElementById('bar').style.opacity = '1';
+        document.getElementById('story1').style.opacity = '1';
+        document.getElementById('upload_form').style.display = 'none';
+    }
 }
 
 function add_story_id() {
@@ -267,6 +286,7 @@ function add_story_id() {
         temp_id = "id_" + (user.story_n + 1);
         user[temp_id] = story_id;
         user.story_n++;
+        return story_id;
     }
     else {
         var user = get_user_data("Main");
@@ -277,7 +297,7 @@ function add_story_id() {
         temp_id = "id_" + (user.story_n + 1);
         user[temp_id] = story_id;
         user.story_n++;
-        alert(user[temp_id]);
+        return story_id;
     }
     
 }
@@ -288,7 +308,6 @@ var data = [
         "name": "Main",
         "story_n": 0,
         "story_s": [],
-        "id_1": "",
     },
     {
         "name": "Future",

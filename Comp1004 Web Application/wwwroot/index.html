@@ -35,7 +35,13 @@
         <div id="bar">
             <div id="progress"></div>
         </div>
-        <img src="img/Carti/007.jpg" id="story1" onclick="add_story_id()"/>
+
+        <form id="upload_form">
+            <h1>Upload a Story</h1>
+            <input type="file" name="imagefile"/>
+        </form>
+
+        <img src="img/Carti/007.jpg" id="story1"/>
         <span id="left" onclick="previous_story()"><</span>
         <span id="right" onclick="next_story()">></span>
     </div>

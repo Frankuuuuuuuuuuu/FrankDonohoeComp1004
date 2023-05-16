@@ -62,7 +62,6 @@ img:hover:not(#story1) {
     top: 0;
     width: 70%;
     height: 70%;
-    overflow: auto;
     background-color: darkslateblue;
     margin-left: auto;
     margin-right: auto;
@@ -119,6 +118,15 @@ img:hover:not(#story1) {
 }
 
     /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-        background: #555;
-    }
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/*upload form*/
+
+#upload_form {
+    display: none;
+    margin: auto;
+    position: relative;
+    left: 450px;
+}
