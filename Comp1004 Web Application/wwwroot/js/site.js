@@ -252,7 +252,44 @@ function toggle_story(n) {//Toggle story UI opacity
     }
 }
 
+function upload_story() {
+
+}
+
+function add_story_id() {
+    if (data[0].story_n == 0) {
+        var user = get_user_data(userlist[userlist.length - 1]);
+        var temp_id = "id_" + (user.story_n);
+        var story_id = user[temp_id];
+        story_id = parseInt(story_id) + 1;
+        user = get_user_data("Main");
+        story_id = "0" + (story_id);
+        temp_id = "id_" + (user.story_n + 1);
+        user[temp_id] = story_id;
+        user.story_n++;
+    }
+    else {
+        var user = get_user_data("Main");
+        var temp_id = "id_" + (user.story_n);
+        var story_id = user[temp_id];
+        story_id = parseInt(story_id) + 1;
+        story_id = "0" + (story_id);
+        temp_id = "id_" + (user.story_n + 1);
+        user[temp_id] = story_id;
+        user.story_n++;
+        alert(user[temp_id]);
+    }
+    
+}
+
+
 var data = [
+    {
+        "name": "Main",
+        "story_n": 0,
+        "story_s": [],
+        "id_1": "",
+    },
     {
         "name": "Future",
         "story_n": 3,
